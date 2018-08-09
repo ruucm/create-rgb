@@ -1,9 +1,22 @@
 {
-  "name": "create-rgb", 
-  "version": "0.0.0", 
-  "bin": "./index.js",
+  "name": "create-rgb",
+  "version": "0.22.0",
+  "bin": {
+    "create-rgb": "./index.js"
+  },
   "dependencies": {
     "shelljs": "0.8.1",
     "readline-sync": "1.4.9"
-  }
+  },
+  "description": "Create App with React GUI Builder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-ruucm:ruucm/create-rgb.git"
+  },
+  "author": "ruucm",
+  "license": "ISC"
 }
