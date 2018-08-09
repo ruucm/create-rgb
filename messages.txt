@@ -1,0 +1,23 @@
+Happy birthday, $1!
+Feliz aniversário, $1!
+Joyeux anniversaire, $1!
+Feliz cumpleaños, $1!
+お誕生日おめでとう、$1！
+Alles Gute zum Geburtstag, $1!
+Per molts anys, $1!
+생일 축하해, $1!
+С Днём рождения, $1!
+З Днем народження, $1!
+Maligayang bati, $1!
+Grattis på födelsedagen, $1!
+Boldog szülinapot, $1!
+Sretan ti rođendan, $1!
+生日快乐, $1!
+生日快樂, $1!
+സന്തോഷ ജന്മദിനം $1കു
+Selamat ulang tahun, $1!
+Sugeng ambal warso, $1!
+Buon compleanno, $1!
+Fijne verjaardag, $1!
+Chúc mừng sinh nhật, $1!
+పుట్టినరోజు శుభాకాంక్షలు $1!
