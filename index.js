@@ -13,25 +13,29 @@ var appName = readlineSync.question('May I have your App name? ')
 console.log('Hello ' + appName + '!')
 
 // Git repo url
-var gitUrl = readlineSync.question('What is your git repo url? ', {
-  hideEchoBack: true, // The typed text on screen is hidden by `*` (default).
-})
+var gitUrl = readlineSync.question(
+  'What is your git repo url? (or just type enter) ',
+  {
+    hideEchoBack: true, // The typed text on screen is hidden by `*` (default).
+  }
+)
 
 shell.echo('make dir at : ' + appName)
 shell.mkdir(appName)
 shell.cd(appName)
 
-if (gitUrl) {
-  // Run external tool synchronously
-  if (
-    shell.exec('git clone https://github.com/ruucm/react-gui-builder.git .')
-      .code !== 0
-  ) {
-    shell.echo('Error: Git clone failed')
-    shell.exit(1)
-  } else {
-    shell.rm('-rf', '.git')
+// Run external tool synchronously
+if (
+  shell.exec('git clone https://github.com/ruucm/react-gui-builder.git .')
+    .code !== 0
+) {
+  shell.echo('Error: Git clone failed')
+  shell.exit(1)
+} else {
+  shell.rm('-rf', '.git')
 
+  // Init New Git
+  if (gitUrl) {
     if (shell.exec('git init').code !== 0) {
       shell.echo('Error: Git init failed')
       shell.exit(1)
@@ -50,18 +54,8 @@ if (gitUrl) {
       shell.echo('Error: Git push failed')
       shell.exit(1)
     }
-    // npm install
-    if (shell.exec('npm install').code !== 0) {
-      shell.echo('Error: npm install failed')
-      shell.exit(1)
-    } else {
-      if (shell.exec('npm run dev').code !== 0) {
-        shell.echo('Error: npm run dev failed')
-        shell.exit(1)
-      }
-    }
   }
-} else {
+
   // npm install
   if (shell.exec('npm install').code !== 0) {
     shell.echo('Error: npm install failed')
