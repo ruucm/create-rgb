@@ -1,67 +1,65 @@
 #!/usr/bin/env node
 
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
+console.log('yay gist~')
+var shell = require('shelljs')
+var readlineSync = require('readline-sync')
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//   /!\ DO NOT MODIFY THIS FILE /!\
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-// create-react-app is installed globally on people's computers. This means
-// that it is extremely difficult to have them upgrade the version and
-// because there's only one global version installed, it is very prone to
-// breaking changes.
-//
-// The only job of create-react-app is to init the repository and then
-// forward all the commands to the local version of create-react-app.
-//
-// If you need to add a new command, please add it to the scripts/ folder.
-//
-// The only reason to modify this file is to add more warnings and
-// troubleshooting information for the `create-react-app` command.
-//
-// Do not make breaking changes! We absolutely don't want to have to
-// tell people to update their global version of create-react-app.
-//
-// Also be careful with new language features.
-// This file must work on Node 0.10+.
-//
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//   /!\ DO NOT MODIFY THIS FILE /!\
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+if (!shell.which('git')) {
+  shell.echo('Sorry, this script requires git')
+  shell.exit(1)
+}
 
-// 'use strict'
+// Wait for user's response.
+var appName = readlineSync.question('May I have your App name? ')
+console.log('Hi ' + appName + '!')
 
-// var chalk = require('chalk')
+// Handle the secret text (e.g. password).
+var gitUrl = readlineSync.question('What is your git repo url? ', {
+  hideEchoBack: true, // The typed text on screen is hidden by `*` (default).
+})
+// console.log('Oh, ' + appName + ' loves ' + gitUrl + '!')
 
-// var currentNodeVersion = process.versions.node
-// var semver = currentNodeVersion.split('.')
-// var major = semver[0]
+// shell.read('-p', 'App Name: ', name)
+shell.echo('make dir at : ' + appName)
+shell.mkdir(appName)
+shell.cd(appName)
 
-// if (major < 4) {
-//   console.error(
-//     chalk.red(
-//       'You are running Node ' +
-//         currentNodeVersion +
-//         '.\n' +
-//         'Create React App requires Node 4 or higher. \n' +
-//         'Please update your version of Node.'
-//     )
-//   )
-//   process.exit(1)
-// }
+// Run external tool synchronously
+if (
+  shell.exec('git clone https://github.com/ruucm/react-gui-builder.git .')
+    .code !== 0
+) {
+  shell.echo('Error: Git clone failed')
+  shell.exit(1)
+} else {
+  shell.rm('-rf', '.git')
 
-// require('./createReactGuiBuilder')
+  if (shell.exec('git init').code !== 0) {
+    shell.echo('Error: Git init failed')
+    shell.exit(1)
+  }
 
-// const exec = require('child_process').exec
-// var yourscript = exec('sh ./create-rgb.sh', (error, stdout, stderr) => {
-//   console.log(`${stdout}`)
-//   console.log(`${stderr}`)
-//   if (error !== null) {
-//     console.log(`exec error: ${error}`)
-//   }
-// })
+  if (shell.exec('git remote add origin ' + gitUrl).code !== 0) {
+    shell.echo('Error: Git remote add origin failed')
+    shell.exit(1)
+  }
+
+  if (
+    shell.exec(
+      'git add --all && git commit -m "Init 🎉" && git push origin master'
+    ).code !== 0
+  ) {
+    shell.echo('Error: Git push failed')
+    shell.exit(1)
+  }
+  // npm install
+  if (shell.exec('npm install').code !== 0) {
+    shell.echo('Error: npm install failed')
+    shell.exit(1)
+  } else {
+    if (shell.exec('npm run dev').code !== 0) {
+      shell.echo('Error: npm run dev failed')
+      shell.exit(1)
+    }
+  }
+}
