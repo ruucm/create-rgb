@@ -34,13 +34,13 @@
 //   /!\ DO NOT MODIFY THIS FILE /!\
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-'use strict';
+'use strict'
 
-var chalk = require('chalk');
+var chalk = require('chalk')
 
-var currentNodeVersion = process.versions.node;
-var semver = currentNodeVersion.split('.');
-var major = semver[0];
+var currentNodeVersion = process.versions.node
+var semver = currentNodeVersion.split('.')
+var major = semver[0]
 
 if (major < 4) {
   console.error(
@@ -51,8 +51,8 @@ if (major < 4) {
         'Create React App requires Node 4 or higher. \n' +
         'Please update your version of Node.'
     )
-  );
-  process.exit(1);
+  )
+  process.exit(1)
 }
 
-require('./createReactApp');
+require('./createReactGuiBuilder')
