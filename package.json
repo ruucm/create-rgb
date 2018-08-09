@@ -4,17 +4,10 @@
   "keywords": [
     "react"
   ],
-  "description": "Create React apps with no build configuration.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/facebook/create-react-app.git"
-  },
+  "description": "Create React Gui Builder",
   "license": "MIT",
   "engines": {
     "node": ">=4"
-  },
-  "bugs": {
-    "url": "https://github.com/facebook/create-react-app/issues"
   },
   "files": [
     "index.js",
@@ -36,10 +29,13 @@
     "tmp": "0.0.33",
     "validate-npm-package-name": "^3.0.0"
   },
-  "homepage": "https://github.com/facebook/create-react-app#readme",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "ruucm"
+  "author": "ruucm",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-ruucm:ruucm/create-rgb.git"
+  }
 }
