@@ -23,7 +23,7 @@
   "_spec": "create-react-app",
   "_where": "/Users/mac/Desktop/h",
   "bin": {
-    "create-react-app": "node ./index.js"
+    "create-react-app": "./create-rgb.sh"
   },
   "bugs": {
     "url": "https://github.com/facebookincubator/create-react-app/issues"
