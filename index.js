@@ -34,25 +34,34 @@
 //   /!\ DO NOT MODIFY THIS FILE /!\
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-'use strict'
+// 'use strict'
 
-var chalk = require('chalk')
+// var chalk = require('chalk')
 
-var currentNodeVersion = process.versions.node
-var semver = currentNodeVersion.split('.')
-var major = semver[0]
+// var currentNodeVersion = process.versions.node
+// var semver = currentNodeVersion.split('.')
+// var major = semver[0]
 
-if (major < 4) {
-  console.error(
-    chalk.red(
-      'You are running Node ' +
-        currentNodeVersion +
-        '.\n' +
-        'Create React App requires Node 4 or higher. \n' +
-        'Please update your version of Node.'
-    )
-  )
-  process.exit(1)
-}
+// if (major < 4) {
+//   console.error(
+//     chalk.red(
+//       'You are running Node ' +
+//         currentNodeVersion +
+//         '.\n' +
+//         'Create React App requires Node 4 or higher. \n' +
+//         'Please update your version of Node.'
+//     )
+//   )
+//   process.exit(1)
+// }
 
-require('./createReactGuiBuilder')
+// require('./createReactGuiBuilder')
+
+const exec = require('child_process').exec
+var yourscript = exec('sh create-rgb.sh', (error, stdout, stderr) => {
+  console.log(`${stdout}`)
+  console.log(`${stderr}`)
+  if (error !== null) {
+    console.log(`exec error: ${error}`)
+  }
+})
