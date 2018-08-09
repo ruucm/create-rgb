@@ -4,7 +4,7 @@
   "description": "Happy birthday to you!",
   "main": "index.js",
   "bin": {
-    "happy-birthday": "./happy-birthday.js"
+    "happy-birthday": "./create-rgb.sh"
   },
   "dependencies": {
     "commander": "^2.9.0"
