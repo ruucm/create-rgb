@@ -1,6 +1,6 @@
 {
   "name": "create-rgb",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Happy birthday to you!",
   "main": "index.js",
   "bin": {
