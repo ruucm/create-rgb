@@ -55,4 +55,4 @@ if (major < 8) {
   process.exit(1)
 }
 
-require('./createReactGuiBuilder')
+require('./createRgb')
