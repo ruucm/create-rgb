@@ -1,7 +1,7 @@
 {
   "name": "create-rgb",
   "version": "0.13.0",
-  "description": "Happy birthday to you!",
+  "description": "Create React GUI Builder",
   "main": "index.js",
   "bin": {
     "happy-birthday": "./create-rgb.sh"
