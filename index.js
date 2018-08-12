@@ -58,11 +58,12 @@ if (
       ) {
         shell.echo('Error: Git push failed')
         shell.exit(1)
-      }
-    } else {
-      if (shell.exec('npm run dev').code !== 0) {
-        shell.echo('Error: npm run dev failed')
-        shell.exit(1)
+      } else {
+        // Run react-gui-builder
+        if (shell.exec('npm run dev').code !== 0) {
+          shell.echo('Error: npm run dev failed')
+          shell.exit(1)
+        }
       }
     }
   }
