@@ -34,28 +34,6 @@ if (
 } else {
   shell.rm('-rf', '.git')
 
-  // Init New Git
-  if (gitUrl) {
-    if (shell.exec('git init').code !== 0) {
-      shell.echo('Error: Git init failed')
-      shell.exit(1)
-    }
-
-    if (shell.exec('git remote add origin ' + gitUrl).code !== 0) {
-      shell.echo('Error: Git remote add origin failed')
-      shell.exit(1)
-    }
-
-    if (
-      shell.exec(
-        'git add --all && git commit -m "Init 🎉" && git push origin master'
-      ).code !== 0
-    ) {
-      shell.echo('Error: Git push failed')
-      shell.exit(1)
-    }
-  }
-
   // npm install
   if (shell.exec('npm install').code !== 0) {
     shell.echo('Error: npm install failed')
@@ -64,6 +42,28 @@ if (
     if (shell.exec('npm run dev').code !== 0) {
       shell.echo('Error: npm run dev failed')
       shell.exit(1)
+    } else {
+      // Init New Git, when npm installed successfully
+      if (gitUrl) {
+        if (shell.exec('git init').code !== 0) {
+          shell.echo('Error: Git init failed')
+          shell.exit(1)
+        }
+
+        if (shell.exec('git remote add origin ' + gitUrl).code !== 0) {
+          shell.echo('Error: Git remote add origin failed')
+          shell.exit(1)
+        }
+
+        if (
+          shell.exec(
+            'git add --all && git commit -m "Init 🎉" && git push origin master'
+          ).code !== 0
+        ) {
+          shell.echo('Error: Git push failed')
+          shell.exit(1)
+        }
+      }
     }
   }
 }
